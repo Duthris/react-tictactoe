@@ -1,4 +1,4 @@
-## LIVE DEMO: [TIC-TAC-TOE](http://tictactoe.duthris.com/tictactoe)
+## LIVE DEMO: [TIC-TAC-TOE](http://tictactoe.duthris.com/)
 
 
 
