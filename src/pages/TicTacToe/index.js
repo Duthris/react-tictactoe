@@ -153,8 +153,9 @@ export default function TicTacToe() {
             }
 
             else if (!Object.values(boardState).some(v => v === null)) {
-                setGame(prevState => ({ ...prevState, winner: null }))
-                setGame(prevState => ({ ...prevState, winNotification: true }))
+                setGame(game => ({ ...game, winner: null, gameEnded: true, winNotification: true }))
+                resetGame();
+                return;
             }
 
         }
@@ -199,9 +200,13 @@ export default function TicTacToe() {
             <Grid container spacing={2} className={classes.grid}>
                 <ButtonGroup variant="contained" color="primary" size="large" aria-label="outlined primary button group">
                     <Button
-                        onClick={startGame}><StartIcon />Start Game</Button>
+                        onClick={startGame}
+                        disabled={game.gameStarted ? true : false}
+                    ><StartIcon />Start Game</Button>
                     <Button className={classes.button}
-                        onClick={resetGame}><ResignIcon />Resign</Button>
+                        onClick={resetGame}
+                        disabled={game.gameStarted ? false : true}
+                    ><ResignIcon />Resign</Button>
                 </ButtonGroup>
                 <FormControlLabel
                     control={<Switch
